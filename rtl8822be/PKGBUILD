@@ -1,0 +1,20 @@
+# Maintainer: Mohammad Hadi Hosseinpour
+
+pkgname=firmware-rtl8822be-bpi
+pkgver=1.0
+pkgrel=1
+pkgdesc="Firmware for the RTL8822BE in Banana Pi"
+license=('Proprietary')
+url="https://github.com/BPI-SINOVOIP/BPI_WiFi_Firmware"
+arch=('any')
+provides=('firmware-rtl8822be')
+source=('rtl8822b_config' 'rtl8822b_fw')
+md5sums=('3eb96095411a33c339b3da2a7e9d94f3' '8d5194ac7a8ad0f6346ba63d9e80c5e6')
+sha256sums=('ea082136d5285655372e3805cd50d961bd7d42085c6fc1058a115a7e844df9c1' '71c76f60cdd0cf6f53abcbb907c04e17c9af40a08314107ee814704d2492f82c')
+
+package() {
+  mkdir -p "${pkgdir}/usr/lib/firmware/"
+  for file in "${source[@]}" ; do
+    cp "${srcdir}/${file}" "${pkgdir}/usr/lib/firmware/${file}"
+  done
+}

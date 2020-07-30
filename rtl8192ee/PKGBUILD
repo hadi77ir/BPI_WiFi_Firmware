@@ -1,0 +1,20 @@
+# Maintainer: Mohammad Hadi Hosseinpour
+
+pkgname=firmware-rtl8192ee-bpi
+pkgver=1.0
+pkgrel=1
+pkgdesc="Firmware for the RTL8192EE in Banana Pi"
+license=('Proprietary')
+url="https://github.com/BPI-SINOVOIP/BPI_WiFi_Firmware"
+arch=('any')
+provides=('firmware-rtl8192ee')
+source=('rtl8761a_config' 'rtl8761au_fw')
+md5sums=('85a2fe81a19c454b57fa04c137a4acfe' '49272a7c0f245a96c62a671645a3244c')
+sha256sums=('c01afce606ad1506033da3dcf88d0ae4595b9a7e0a10b0fcd1ba21d71fe4b292' '50f0961c3a309d412d94a5e117376348a7c79863334d4ccac470a7273b695efe')
+
+package() {
+  mkdir -p "${pkgdir}/usr/lib/firmware/"
+  for file in "${source[@]}" ; do
+    cp "${srcdir}/${file}" "${pkgdir}/usr/lib/firmware/${file}"
+  done
+}

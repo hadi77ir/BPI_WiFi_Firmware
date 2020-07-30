@@ -1,0 +1,20 @@
+# Maintainer: Mohammad Hadi Hosseinpour
+
+pkgname=firmware-rtl8723bu-bpi
+pkgver=1.0
+pkgrel=1
+pkgdesc="Firmware for the RTL8723BU in Banana Pi"
+license=('Proprietary')
+url="https://github.com/BPI-SINOVOIP/BPI_WiFi_Firmware"
+arch=('any')
+provides=('firmware-rtl8723bu')
+source=('rtl8723b_fw' 'rtl8723bu_config')
+md5sums=('2437995a76948700404d7c01b75885a3' 'd0f111014be54b8a21560412262c99cb')
+sha256sums=('5e89d941ae165a1043db99ff296de9e649be8c30697b475f9521459fa445fa34' 'f40ed3f10c9471a961b7f399f718b2f485816d3259a39e2dea9d71b9dceae6aa')
+
+package() {
+  mkdir -p "${pkgdir}/usr/lib/firmware/"
+  for file in "${source[@]}" ; do
+    cp "${srcdir}/${file}" "${pkgdir}/usr/lib/firmware/${file}"
+  done
+}

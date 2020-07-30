@@ -1,0 +1,20 @@
+# Maintainer: Mohammad Hadi Hosseinpour
+
+pkgname=firmware-rtl8821cu-bpi
+pkgver=1.0
+pkgrel=1
+pkgdesc="Firmware for the RTL8821CU in Banana Pi"
+license=('Proprietary')
+url="https://github.com/BPI-SINOVOIP/BPI_WiFi_Firmware"
+arch=('any')
+provides=('firmware-rtl8821cu')
+source=('rtl8821cu_config' 'rtl8821cu_fw')
+md5sums=('6551d1f5c5a9c4ce7ab755d58576e0b0' '3b6dba54d31b8b369e932cfcbf2c68d3')
+sha256sums=('292717b0610ce920f66b734c299d349ea59a4c4400044078d8fc65625f17e382' '7dd72cc13f631435a65512b68553cdeff65cab46364dcd7415e51a5b31cf89d4')
+
+package() {
+  mkdir -p "${pkgdir}/usr/lib/firmware/"
+  for file in "${source[@]}" ; do
+    cp "${srcdir}/${file}" "${pkgdir}/usr/lib/firmware/${file}"
+  done
+}

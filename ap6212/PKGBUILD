@@ -1,0 +1,20 @@
+# Maintainer: Mohammad Hadi Hosseinpour
+
+pkgname=firmware-ap6212-bpi
+pkgver=1.0
+pkgrel=1
+pkgdesc="Firmware for the BCM43430/AP6212 in Banana Pi"
+license=('Proprietary')
+url="https://github.com/BPI-SINOVOIP/BPI_WiFi_Firmware"
+arch=('any')
+provides=('firmware-ap6212')
+source=('bcm43438a0.hcd' 'bcm43438a1.hcd' 'fw_bcm43438a0_apsta.bin' 'fw_bcm43438a0.bin' 'fw_bcm43438a0_p2p.bin' 'fw_bcm43438a1_apsta.bin' 'fw_bcm43438a1.bin' 'fw_bcm43438a1_p2p.bin' 'nvram_ap6212.txt')
+md5sums=('6107f44f8244c23df368329c39513cab' 'a2d5ce5416f432ae75c48f1758c52004' '1a88dd5411b0c4f1ba12e0d9ba52dcc3' '805e694ef375a8a3d1766c909bddf2d4' '805e694ef375a8a3d1766c909bddf2d4' '6fa0a8052f68746b6a2f5d65ac9ae2b8' '6fa0a8052f68746b6a2f5d65ac9ae2b8' 'ea08c2fce233bb32173df6e4862ac15f' '940ca42dc02c4051f6645c11e3d733cd')
+sha256sums=('282f7e1dc03f65af19d247e7ab1b266c0aee8ff542492541d4565c91d127d4b4' 'd396912aa4efa7e0ea93dc6b63b1088619b59676ab53404d14fe79f5c71a5da0' 'faa0dbe0ca74728e562e312ae3a691e496d915162a0be0a80cd31cdf0ec68911' '6f96677d24289fcb31287c693a2f1084e6f0794250445c53314979349b24271d' '6f96677d24289fcb31287c693a2f1084e6f0794250445c53314979349b24271d' 'f9078a16c4423c8c441dc66f6eac152b2c0fd6ad2f943edb4804d7027ae08e1b' 'f9078a16c4423c8c441dc66f6eac152b2c0fd6ad2f943edb4804d7027ae08e1b' '10be231737a7e2f6badd3bc0034f8ec91dc9d8c747276db059747a2f52b25468' '29dd1ebb2f9691ae10acd1227e243528ebe32b95d6af4831a6f63ab5dafa47cd')
+
+package() {
+  mkdir -p "${pkgdir}/usr/lib/firmware/brcm"
+  for file in "${source[@]}" ; do
+    cp "${srcdir}/${file}" "${pkgdir}/usr/lib/firmware/brcm/${file}"
+  done
+}
