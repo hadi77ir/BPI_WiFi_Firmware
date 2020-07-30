@@ -3,7 +3,7 @@
 This fork just adds PKGBUILDs to [upstream](https://github.com/BPI-SINOVOIP/BPI_WiFi_Firmware).
 
 ## Available Packages
-|  Wireless Chipset  |           Package           |      Folder      |
+|  Wireless Chipset  |           Package           |    Directory     |
 |--------------------|-----------------------------|------------------|
 |  AP6210            |  `firmware-ap6210-bpi`      |  `ap6210`        |
 |  AP6212            |  `firmware-ap6212-bpi`      |  `ap6212`        |
@@ -34,6 +34,35 @@ This fork just adds PKGBUILDs to [upstream](https://github.com/BPI-SINOVOIP/BPI_
 
 
 Note: "M2" boards (M2 Berry, M2+, M2U, M2M, M2Z) may be available with other chipsets (AP6181 and AP6335) too. Check your board before installing pacakges and reporting issues to this repository or upstream.
+
+## Installation
+### Prebuilt Packages
+Prebuilt packages are available at [here](https://github.com/hadi77ir/BananaPi-Wireless-Firmware/releases/latest).
+
+Prebuilt packages can be installed through:
+```
+# pacman -U <FILENAME>
+```
+where `<FILENAME>` would be the name of package file.
+
+### Building
+Clone this repository by executing
+```
+$ git clone https://github.com/hadi77ir/BananaPi-Wireless-Firmware.git
+```
+Then go to the respective directory (for example `ap6212`)
+```
+$ cd BananaPi-Wireless-Firmware
+$ cd ap6212
+```
+Now you can build the package by running
+```
+$ makepkg -s
+```
+If you want to build and install using single line of command, run this instead
+```
+$ makepkg -si
+```
 
 ## Issues and Pull Requests
 Pull requests about PKGBUILDs are welcome. I don't accept any pull requests about firmware changes. Issues about the firmwares should be reported to upstream, as I am only responsible for packaging.
